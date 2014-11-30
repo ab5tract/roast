@@ -1,7 +1,7 @@
 use v6;
 use Test;
 
-plan 173;
+plan 174;
 
 sub showset($s) { $s.keys.sort.join(' ') }
 
@@ -50,7 +50,8 @@ sub showset($s) { $s.keys.sort.join(' ') }
     ok (set <a b c>) ~~ Set, "Type-checking smartmatch works";
 
     ok (bag <a b c>) ~~ (set <a b c>), "Bag smartmatches with equivalent set";
-    ok (bag <a a a b c>) ~~ (set <a b c>), "... even if the Bag has greater quantities";
+    nok (bag <a a a b c>) ~~ (set <a b c>), "... unless a bag key has a weight greater than one";
+    ok ((bag <a a a b c>).Set) ~~ (set <a b c>), "... however, if the bag is turned back into a set it is equivalent";
     nok (bag <b c>) ~~ (set <a b c>), "Subset does not smartmatch";
     nok (bag <a b c d>) ~~ (set <a b c>), "Superset does not smartmatch";
     nok (bag <a b c>) ~~ Set, "Type-checking smartmatch works";

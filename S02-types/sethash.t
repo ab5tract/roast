@@ -1,7 +1,7 @@
 use v6;
 use Test;
 
-plan 199;
+plan 200;
 
 # L<S02/Mutable types/"QuantHash of Bool">
 
@@ -83,7 +83,8 @@ sub showset($s) { $s.keys.sort.join(' ') }
     ok (set <a b c>) ~~ (SetHash.new: <a b c>), "SetHash matches Set, too";
 
     ok (bag <a b c>) ~~ (SetHash.new: <a b c>), "Bag smartmatches with equivalent SetHash:";
-    ok (bag <a a a b c>) ~~ (SetHash.new: <a b c>), "... even if the Bag has greater quantities";
+    nok (bag <a a a b c>) ~~ (SetHash.new: <a b c>), "... unless a bag key has a weight greater than one";
+    ok ((bag <a a a b c>).Set) ~~ (SetHash.new: <a b c>), "... however, if the bag is turned back into a set it is equivalent";
     nok (bag <b c>) ~~ (SetHash.new: <a b c>), "Subset does not smartmatch";
     nok (bag <a b c d>) ~~ (SetHash.new: <a b c>), "Superset does not smartmatch";
     nok (bag <a b c>) ~~ SetHash, "Type-checking smartmatch works";

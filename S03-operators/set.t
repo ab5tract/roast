@@ -142,6 +142,7 @@ ok ($ks (-) set <is>) ⊆ $ks, "Set is subset of SetHash";
 ok $ks ⊆ $ks, "SetHash is subset of itself";
 ok $ks ⊆ <I'm afraid it is my day>, "SetHash is subset of string";
 
+#?rakudo 6 skip 'bag (*) set behavior for comparisons has changed'
 nok $s ⊆ $b, "Set is not a subset of Bag";
 ok $b ⊆ $b, "Bag is subset of itself";
 nok $b ⊆ $s, "Bag is not a subset of Set";
@@ -158,6 +159,7 @@ ok ($ks (-) set <is>) (<=) $ks, "Set is subset of SetHash (texas)";
 ok $ks (<=) $ks, "SetHash is subset of itself (texas)";
 ok $ks (<=) <I'm afraid it is my day>, "SetHash is subset of string (texas)";
 
+#?rakudo 6 skip 'bag behavior for comparisons has changed'
 nok $s (<=) $b, "Set is not a subset of Bag (texas)";
 ok $b (<=) $b, "Bag is subset of itself (texas)";
 nok $b (<=) $s, "Bag is not a subset of Set (texas)";
@@ -175,6 +177,7 @@ nok ($ks (-) set <is>) ⊈ $ks, "Set is subset of SetHash";
 nok $ks ⊈ $ks, "SetHash is subset of itself";
 nok $ks ⊈ <I'm afraid it is my day>, "SetHash is subset of string";
 
+#?rakudo 6 skip 'bag behavior for comparisons has changed'
 ok $s ⊈ $b, "Set is not a subset of Bag";
 nok $b ⊈ $b, "Bag is subset of itself";
 ok $b ⊈ $s, "Bag is not a subset of Set";
@@ -191,6 +194,7 @@ nok ($ks (-) set <is>) !(<=) $ks, "Set is subset of SetHash (texas)";
 nok $ks !(<=) $ks, "SetHash is subset of itself (texas)";
 nok $ks !(<=) <I'm afraid it is my day>, "SetHash is subset of string (texas)";
 
+#?rakudo 6 skip 'bag behavior for comparisons has changed'
 ok $s !(<=) $b, "Set is not a subset of Bag (texas)";
 nok $b !(<=) $b, "Bag is subset of itself (texas)";
 ok $b !(<=) $s, "Bag is not a subset of Set (texas)";
@@ -209,6 +213,7 @@ ok ($ks (-) set <is>) ⊂ $ks, "Set is proper subset of SetHash";
 nok $ks ⊂ $ks, "SetHash is not proper subset of itself";
 ok $ks ⊂ <I'm afraid it is my day>, "SetHash is proper subset of string";
 
+#?rakudo 6 skip 'bag behavior for comparisons has changed'
 nok $s ⊂ $b, "Set is not a proper subset of Bag";
 nok $b ⊂ $b, "Bag is not proper subset of itself";
 nok $b ⊂ $s, "Bag is not a proper subset of Set";
@@ -225,6 +230,7 @@ ok ($ks (-) set <is>) (<) $ks, "Set is proper subset of SetHash (texas)";
 nok $ks (<) $ks, "SetHash is not proper subset of itself (texas)";
 ok $ks (<) <I'm afraid it is my day>, "SetHash is proper subset of string (texas)";
 
+#?rakudo 6 skip 'bag behavior for comparisons has changed'
 nok $s (<) $b, "Set is not a proper subset of Bag (texas)";
 nok $b (<) $b, "Bag is not proper subset of itself (texas)";
 nok $b (<) $s, "Bag is not a proper subset of Set (texas)";
@@ -243,6 +249,7 @@ nok ($ks (-) set <is>) ⊄ $ks, "Set is proper subset of SetHash";
 ok $ks ⊄ $ks, "SetHash is not proper subset of itself";
 nok $ks ⊄ <I'm afraid it is my day>, "SetHash is proper subset of string";
 
+#?rakudo 6 skip 'bag behavior for comparisons has changed'
 ok $s ⊄ $b, "Set is not a proper subset of Bag";
 ok $b ⊄ $b, "Bag is not proper subset of itself";
 ok $b ⊄ $s, "Bag is not a proper subset of Set";
@@ -259,6 +266,7 @@ nok ($ks (-) set <is>) !(<) $ks, "Set is proper subset of SetHash (texas)";
 ok $ks !(<) $ks, "SetHash is not proper subset of itself (texas)";
 nok $ks !(<) <I'm afraid it is my day>, "SetHash is proper subset of string (texas)";
 
+#?rakudo 6 skip 'bag behavior for comparisons has changed'
 ok $s !(<) $b, "Set is not a proper subset of Bag (texas)";
 ok $b !(<) $b, "Bag is not proper subset of itself (texas)";
 ok $b !(<) $s, "Bag is not a proper subset of Set (texas)";
@@ -277,6 +285,7 @@ ok ($ks (-) set <is>) R⊇ $ks, "Set is reversed superset of SetHash";
 ok $ks R⊇ $ks, "SetHash is reversed superset of itself";
 ok $ks R⊇ <I'm afraid it is my day>, "SetHash is reversed superset of string";
 
+#?rakudo 6 skip 'bag behavior for comparisons has changed'
 nok $s R⊇ $b, "Set is not a reversed superset of Bag";
 ok $b R⊇ $b, "Bag is reversed superset of itself";
 nok $b R⊇ $s, "Bag is not a reversed superset of Set";
@@ -293,6 +302,7 @@ ok ($ks (-) set <is>) R(>=) $ks, "Set is reversed superset of SetHash (texas)";
 ok $ks R(>=) $ks, "SetHash is reversed superset of itself (texas)";
 ok $ks R(>=) <I'm afraid it is my day>, "SetHash is reversed superset of string (texas)";
 
+#?rakudo 6 skip 'bag behavior for comparisons has changed'
 nok $s R(>=) $b, "Set is not a reversed superset of Bag (texas)";
 ok $b R(>=) $b, "Bag is reversed superset of itself (texas)";
 nok $b R(>=) $s, "Bag is not a reversed superset of Set (texas)";
@@ -311,6 +321,7 @@ nok ($ks (-) set <is>) R⊉ $ks, "Set is reversed superset of SetHash";
 nok $ks R⊉ $ks, "SetHash is reversed superset of itself";
 nok $ks R⊉ <I'm afraid it is my day>, "SetHash is reversed superset of string";
 
+#?rakudo 6 skip 'bag behavior for comparisons has changed'
 ok $s R⊉ $b, "Set is not a reversed superset of Bag";
 nok $b R⊉ $b, "Bag is reversed superset of itself";
 ok $b R⊉ $s, "Bag is not a reversed superset of Set";
@@ -327,6 +338,7 @@ nok ($ks (-) set <is>) !R(>=) $ks, "Set is reversed superset of SetHash (texas)"
 nok $ks !R(>=) $ks, "SetHash is reversed superset of itself (texas)";
 nok $ks !R(>=) <I'm afraid it is my day>, "SetHash is reversed superset of string (texas)";
 
+#?rakudo 6 skip 'bag behavior for comparisons has changed'
 ok $s !R(>=) $b, "Set is not a reversed superset of Bag (texas)";
 nok $b !R(>=) $b, "Bag is reversed superset of itself (texas)";
 ok $b !R(>=) $s, "Bag is not a reversed superset of Set (texas)";
@@ -345,6 +357,7 @@ ok ($ks (-) set <is>) R⊃ $ks, "Set is reversed proper superset of SetHash";
 nok $ks R⊃ $ks, "SetHash is not reversed proper superset of itself";
 ok $ks R⊃ <I'm afraid it is my day>, "SetHash is reversed proper superset of string";
 
+#?rakudo 6 skip 'bag behavior for comparisons has changed'
 nok $s R⊃ $b, "Set is not a reversed proper superset of Bag";
 nok $b R⊃ $b, "Bag is not reversed proper superset of itself";
 nok $b R⊃ $s, "Bag is not a reversed proper superset of Set";
@@ -361,6 +374,7 @@ ok ($ks (-) set <is>) R(>) $ks, "Set is reversed proper superset of SetHash (tex
 nok $ks R(>) $ks, "SetHash is not reversed proper superset of itself (texas)";
 ok $ks R(>) <I'm afraid it is my day>, "SetHash is reversed proper superset of string (texas)";
 
+#?rakudo 6 skip 'bag behavior for comparisons has changed'
 nok $s R(>) $b, "Set is not a reversed proper superset of Bag (texas)";
 nok $b R(>) $b, "Bag is not reversed proper superset of itself (texas)";
 nok $b R(>) $s, "Bag is not a reversed proper superset of Set (texas)";
@@ -379,6 +393,7 @@ nok ($ks (-) set <is>) R⊅ $ks, "Set is reversed proper superset of SetHash";
 ok $ks R⊅ $ks, "SetHash is not reversed proper superset of itself";
 nok $ks R⊅ <I'm afraid it is my day>, "SetHash is reversed proper superset of string";
 
+#?rakudo 6 skip 'bag behavior for comparisons has changed'
 ok $s R⊅ $b, "Set is not a reversed proper superset of Bag";
 ok $b R⊅ $b, "Bag is not reversed proper superset of itself";
 ok $b R⊅ $s, "Bag is not a reversed proper superset of Set";
@@ -395,6 +410,7 @@ nok ($ks (-) set <is>) !R(>) $ks, "Set is reversed proper superset of SetHash (t
 ok $ks !R(>) $ks, "SetHash is not reversed proper superset of itself (texas)";
 nok $ks !R(>) <I'm afraid it is my day>, "SetHash is reversed proper superset of string (texas)";
 
+#?rakudo 6 skip 'bag behavior for comparisons has changed'
 ok $s !R(>) $b, "Set is not a reversed proper superset of Bag (texas)";
 ok $b !R(>) $b, "Bag is not reversed proper superset of itself (texas)";
 ok $b !R(>) $s, "Bag is not a reversed proper superset of Set (texas)";

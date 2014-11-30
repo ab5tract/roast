@@ -1,7 +1,7 @@
 use v6;
 use Test;
 
-plan 128;
+plan 144;
 
 sub showset($s) { $s.keys.sort.join(' ') }
 
@@ -66,7 +66,7 @@ sub symmetric-difference($a, $b) {
     ($a (|) $b) (-) ($b (&) $a)
 }
 
-#?rakudo 8 todo "Rakudo update in progress, but not done yet"
+#?rakudo 8 skip "Rakudo update in progress, but not done yet"
 
 is showkv($s (^) $b), showkv(symmetric-difference($s, $b)), "Bag symmetric difference with Set is correct";
 isa_ok ($s (^) $b), Bag, "... and it's actually a Bag";
@@ -165,6 +165,30 @@ ok bag(my @large_arr = ("a"...*)[^50000]), "... a large array goes into a bar - 
     ok $b (>+) $kb, "Our bag is a msuperset of our keybag";
     ok $b (>+) $b, "Our bag is a msuperset of itself";
     ok $kb (>+) $kb, "Our keybag is a msuperset of itself";
+}
+
+{
+
+    my $s     = bag <e>;
+    my $sub   = bag <n e e d>;
+    my $super = bag <n e e d e e y>;
+
+    ok $s ⊂ $sub, "⊂ - {$s.gist} is a strict subbag of {$sub.gist}";
+    ok $sub ⊄ $super, "⊄ - {$sub.gist} is not a strict subbag of {$super.gist}";
+    ok $sub ⊆ $super, "⊆ - {$sub.gist} is a subbag of {$super.gist}";
+    ok $super ⊈ $sub, "⊈ - {$super.gist} is not a subbag of {$sub.gist}";
+    ok $sub ⊃ $s, "⊃ - {$sub.gist} is a strict superbag of {$s.gist}";
+    ok $super ⊅ $sub, "⊅ - {$super.gist} is not a strict superbag of {$sub.gist}";
+    ok $super ⊇ $sub, "⊇ - {$super.gist} is a superbag of {$sub.gist}"; 
+    ok $sub ⊉ $super, "⊉ - {$sub.gist} is not a superbag of {$super.gist}";
+    ok $s (<) $sub, "(<) - {$s.gist} is a strict subbag of {$sub.gist} (texas)";
+    ok $sub !(<) $super, "!(<) - {$sub.gist} is not a strict subbag of {$super.gist} (texas)";
+    ok $sub (>) $s, "(>) - {$sub.gist} is a strict superbag of {$s.gist} (texas)";
+    ok $super !(>) $sub, "!(>) - {$super.gist} is not a strict superbag of {$sub.gist}";
+    ok $sub (<=) $super, "(<=) - {$sub.gist} subbag {$super.gist} (texas)";
+    ok $super !(<=) $sub, "!(<=) - {$super.gist} is not a subbag of {$sub.gist} (texas)";
+    ok $super (>=) $sub, "(>=) - {$super.gist} is a superbag of {$sub.gist} (texas)"; 
+    ok $sub !(>=) $super, "!(>=) - {$sub.gist} is not a superbag of {$super.gist} (texas)";
 }
 
 {
